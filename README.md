@@ -26,13 +26,13 @@ Step by Step procedure to create SQL Server AlwaysOn Availability Group. Startin
 [**I. Create virtual machines using Hyper-V**](https://github.com/fortehub/AlwaysOnPractice/blob/c7a4065279e3cb53f55ff35e9316e5ee341e1d5a/I.%20Create%20virtual%20machines%20using%20Hyper-V.md)
 <br/>
 
-[**II. Install OS and OS features such as Active Directory Domain Services, and so on**]
+[**II. Install OS and OS features such as Active Directory Domain Services, and so on**](https://github.com/fortehub/AlwaysOnPractice/blob/5861528fd1fb75867866bb79b4f6ef80cce91921/II.%20Install%20OS%20and%20OS%20features%20such%20as%20Active%20Directory%20Domain%20Services,%20and%20so%20on.md)
 <br/>
 
-[**III. Install & Configure SQL Server & SSMS on virtual Machines**]
+[**III. Join SQL Server Database Server to Domain & Create a Windows Failover Cluster**]
 <br/>
 
-[**IV. Join SQL Server Database Server to Domain & Create a Windows Failover Cluster**]
+[**IV. Install & Configure SQL Server & SSMS on virtual Machines**]
 <br/>
 
 [**V. Add a sample database and Setup AlwaysON AG features**]
