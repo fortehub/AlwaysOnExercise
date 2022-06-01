@@ -62,5 +62,5 @@ Or open the Hyper-V Manager to see the newly created Virtual Machines. <br/>
 **Next Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
 
-[II. Install OS and OS features such as Active Directory Domain Services, and so on]
+[**II. Install OS and OS features such as Active Directory Domain Services, and so on**](https://github.com/fortehub/AlwaysOnPractice/blob/0aa7069c6465c1d0023ee0076cea6bb19ae2e772/II.%20Install%20OS%20and%20OS%20features%20such%20as%20Active%20Directory%20Domain%20Services,%20and%20so%20on.md)
 
