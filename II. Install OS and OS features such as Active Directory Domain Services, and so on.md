@@ -5,7 +5,10 @@
 
 **Resources**
 ------------------------------------------------------------------------------------------------------------------------------------
-**1.** Windows Server 2016 or 2019 ISO. I use windows server 2016 here, since this is the OS I'm most familiar with. To download, go to [Windows Server 2016 download.](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2016) <br/>
+Windows Server 2016 or 2019 ISO. I use windows server 2016 here, since this is the OS I'm most familiar with. To download, go to [Windows Server 2016 download.](https://www.microsoft.com/en-us/evalcenter/download-windows-server-2016) <br/>
+
+**Steps**
+------------------------------------------------------------------------------------------------------------------------------------
 **2** Instructions to install an OS to virtual Machines. Visit this, [Installing OS On Windows Hyper-V Manager.](https://www.c-sharpcorner.com/UploadFile/746cd9/installing-os-on-windows-hyper-v-manager/) <br/>
 **3.** I'm going to use the Windows Server 2016 Standard (Desktop Experience).
 
