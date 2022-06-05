@@ -1,10 +1,12 @@
 # AlwaysOnPractice
 <br/>
-**III. Join SQL Server Database Server to Domain & Create a Windows Failover Cluster**
+**III. Join MS SQL Database Server to Domain & Create a Windows Failover Cluster**
 <br/>
 
 **Steps**
 ------------------------------------------------------------------------------------------------------------------------------------
+**Joining tO Domain**
+
 1. Make sure both servers can communicate with each other. Do a ping test. Disable the firewall of both servers (hjc-adprod, hjc-sqlprod, & hjc-sqldr01). This is not a recommended setup for a Production Environment. We are in testing environment in this demo so we can disable it here. <br/>
 
 To disable, perform the PowerShell script below: <br/>
@@ -48,6 +50,11 @@ Type in the Domain credential/Password:
 
 The server will restart automatically after joining successfully.
 
-5. Repeat the steps for the 2nd MSSQL Database Server.
+5. Repeat the steps for the 2nd MSSQL Database Server.<br/>
+
+
+**Creating a Windows Failover Cluster**
+
+
 
 
