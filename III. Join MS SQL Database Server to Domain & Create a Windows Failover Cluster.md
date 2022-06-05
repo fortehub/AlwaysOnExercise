@@ -42,7 +42,7 @@ Get the Distinguised name of the OU we have just created. We need this for the n
 ```PowerShell
 Add-Computer -DomainName "the domain name" -Credential HJCDOM\Administrator -OUPath "OU=SQL Server,OU=SQL Server,DC=hjcdom,DC=local" -Restart
 ```
-Where -OUPath is the Distinguished Name of the OUPath we created a while ago.
+Where -OUPath is the Distinguished Name of the OU we've created a while ago.
 
 Type in the Domain credential/Password:
 
