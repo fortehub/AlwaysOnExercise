@@ -112,6 +112,6 @@ To create a scheduled windows server backup, follow this -> [How to use the back
 **Next Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
 
-[**III. Join SQL Server Database Server to Domain & Create a Windows Failover Cluster**]
+[**III. Join MS SQL Database Server to Domain & Create a Windows Failover Cluster**]
 
 
