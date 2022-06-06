@@ -1,5 +1,5 @@
 # AlwaysOnPractice
-<br/>
+
 **II. Install OS and OS features such as Active Directory Domain Services, and so on**
 <br/>
 
