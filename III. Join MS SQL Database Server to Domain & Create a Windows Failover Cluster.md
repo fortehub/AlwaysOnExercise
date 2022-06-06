@@ -1,11 +1,11 @@
 # AlwaysOnPractice
-<br/>
+
 **III. Join MS SQL Database Server to Domain & Create a Windows Failover Cluster**
 <br/>
 
 **Steps**
 ------------------------------------------------------------------------------------------------------------------------------------
-**Joining tO Domain**
+**Joining to Domain**
 
 1. Make sure both servers can communicate with each other. Do a ping test. Disable the firewall of both servers (hjc-adprod, hjc-sqlprod, & hjc-sqldr01). This is not a recommended setup for a Production Environment. We are in testing environment in this demo so we can disable it here. <br/>
 
@@ -51,9 +51,57 @@ Type in the Domain credential/Password:
 The server will restart automatically after joining successfully.
 
 5. Repeat the steps for the 2nd MSSQL Database Server.<br/>
+<br/>
+<br/>
+
 
 
 **Creating a Windows Failover Cluster**
+
+1. Open PowerShell and run the following CMDlet below on the 2 Database Server, to install WFC (Windows Failover Clustering) roles.
+
+```PowerShell
+Install-WindowsFeature Failover-Clustering -IncludeManagementTools
+```
+![image](https://user-images.githubusercontent.com/95063830/172080500-0a3653c2-a109-49fc-9f06-37d1ed2aacd0.png)
+
+2. To create a cluster using GUI, follow this guide, [How To Create a Windows Server Failover Cluster Without Shared Storage.](https://redmondmag.com/articles/2014/07/14/windows-server-failover-cluster.aspx)
+
+For PowerShell follow the succeeding steps.
+
+3. Validate the Cluster first. Run the following CMDlet below.
+
+```PowerShell
+Test-Cluster -Node <Name of nodes>
+```
+![image](https://user-images.githubusercontent.com/95063830/172083619-44671259-f307-4ade-8db0-0478b0f05c14.png)
+
+4. Create the Cluster. <br/>
+Run the following command to create the cluste:
+
+```PowerShell
+New-Cluster -Name "your cluster name" -Node <name of nodes,nodes> -NoStorage -StaticAddress 192.168.10.130
+```
+![image](https://user-images.githubusercontent.com/95063830/172085190-3b17e090-0e86-4c5e-a48c-25aa4760b05d.png)
+
+Clustered created but there are some minor error based on the screenshot above. Upon checking of the logs, the error is about cluster witness, which in our case, we don't need it, so we can disregard the error.
+
+![image](https://user-images.githubusercontent.com/95063830/172085131-6b63e9f5-9e36-402b-8bd9-be2b51a7bf84.png)
+
+Verifying thru the Failover Cluster Manager.
+
+![image](https://user-images.githubusercontent.com/95063830/172085248-52970aaf-df75-4617-8631-48868f5f0e32.png)
+
+Clustered creation verified!!
+
+For more info, visit this guide, [Create a Two-Node Windows Cluster.](https://argonsys.com/microsoft-cloud/articles/create-two-node-windows-cluster/)
+
+**Next Stage**
+------------------------------------------------------------------------------------------------------------------------------------
+
+[IV. Install & Configure SQL Server & SSMS on virtual Machines]
+
+
 
 
 
