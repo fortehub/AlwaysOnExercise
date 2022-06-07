@@ -99,7 +99,7 @@ For more info, visit this guide, [Create a Two-Node Windows Cluster.](https://ar
 **Next Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
 
-[IV. Install & Configure SQL Server & SSMS on virtual Machines]
+[IV. Install & Configure SQL Server & SSMS on virtual Machines](https://github.com/fortehub/AlwaysOnPractice/blob/e77e7461f693bedf89bc4c02019e6ef2189619e6/IV.%20Install%20&%20Configure%20SQL%20Server%20&%20SSMS%20on%20virtual%20Machines.md)
 
 
 
