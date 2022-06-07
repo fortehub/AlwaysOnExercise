@@ -97,9 +97,16 @@ Where the folder "d:\mssql\datalogs" will house the database and log files and "
   
   *Installation Done. Repeat the steps above to the 2nd MS SQL Database Server*  <br/>
   ![image](https://user-images.githubusercontent.com/95063830/172401531-f8e3fa56-20e2-44f9-9700-572f857c8672.png)
+ <br/>
+ <br/>
+  
+  2. For SSMS Installation, follow this guide, [How To Install Microsoft SQL Server Management Studio (SSMS)?.](https://www.c-sharpcorner.com/article/how-to-install-microsoft-sql-server-management-studio-ssms/)
+  
+  **Next Stage**
+------------------------------------------------------------------------------------------------------------------------------------
 
-  
-  
+[V. Add a sample database and Setup AlwaysON AG features]
+
  
   
   
