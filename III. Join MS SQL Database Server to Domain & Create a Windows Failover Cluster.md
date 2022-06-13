@@ -14,7 +14,11 @@ To disable, perform the PowerShell script below: <br/>
 Set-NetFirewallProfile -Profile Public,Private,Domain -Enabled False
 ```
 ![image](https://user-images.githubusercontent.com/95063830/172056165-32b69b43-f1fd-416e-862f-8e7091b941be.png)
-
+ <br/>
+ 
+Follow this guide to configure firewall for SQL Server, [Configure the Windows Firewall to Allow SQL Server Access.](https://docs.microsoft.com/en-us/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access?view=sql-server-ver16) <br/>
+ <br/>
+ 
 Perform this on the 3 server.
 
 2. Change the Preferred DNS addresses of the MS SQL Database Servers, match with the IPv4 Address of the Domain Controller (hjc-adprod). 
