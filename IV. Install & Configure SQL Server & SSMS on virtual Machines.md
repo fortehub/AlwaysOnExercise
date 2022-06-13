@@ -105,7 +105,7 @@ Where the folder "d:\mssql\datalogs" will house the database and log files and "
   **Next Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
 
-[V. Add a sample database and Setup AlwaysON AG features](https://github.com/fortehub/AlwaysOnPractice/blob/4d90dfb19c9065f21aee545c1e6741547b82394b/https:/github.com/fortehub/V.%20Add%20a%20sample%20database%20and%20Setup%20AlwaysON%20AG%20features.md)
+[V. Add a sample database and Setup AlwaysON AG features](https://github.com/fortehub/AlwaysOnPractice/blob/53ca40141376f0776d22c860de07eb40fe24b310/V.%20Add%20a%20sample%20database%20and%20Setup%20AlwaysON%20AG%20features.md)
 
  
   
