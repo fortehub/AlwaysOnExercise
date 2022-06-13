@@ -37,9 +37,6 @@ Step by Step procedure to create SQL Server AlwaysOn Availability Group. Startin
 
 [**V. Add a sample database and Setup AlwaysON AG features**]
 <br/>
-
-[**VI. Perform post analysis procedure**]
-<br/>
 <br/>
 
 **First Stage**
