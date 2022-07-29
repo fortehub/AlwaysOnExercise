@@ -102,7 +102,8 @@ Click the Add Replica button and add the 2nd SQL Server Instance (hjc-sqldr01). 
 
 Copy the configuration of the 1st SQL Server Instance.
 
-![image](https://user-images.githubusercontent.com/95063830/173296037-4a9ea5ae-831e-49df-95b3-4ac92b5fd20f.png)
+![image](https://user-images.githubusercontent.com/95063830/181664746-88645c92-4339-4392-b0e4-6bf35f6b68ed.png)
+
 
 Leave the default configuration for "Backup Preferences" which is "Prefer Secondary". We can skip the "Listener" creation and do it later. Set aside Read-Only Routing, we don't need in this setup. Click Next to proceed.
 <br/>
