@@ -1,4 +1,4 @@
-# AlwaysOnPractice
+# AlwaysOnExercise
 Practice SQL Server AlwaysOn Setup &amp; Configuration. From building virtual machines, Installing  OS & SQL Server, Setup Cluster to the actual Setup of AlwaysOn AG features.
 <br/>
 <br/>
