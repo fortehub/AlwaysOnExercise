@@ -1,4 +1,4 @@
-# AlwaysOnPractice
+# AlwaysOnExercise
 
 **IV. Install & Configure SQL Server & SSMS on virtual Machines**
 <br/>
