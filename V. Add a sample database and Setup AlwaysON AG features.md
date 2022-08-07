@@ -1,4 +1,4 @@
-# AlwaysOnPractice
+# AlwaysOnExercise
 
 **V. Add a sample database and Setup AlwaysON AG features**
 <br/>
