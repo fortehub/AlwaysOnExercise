@@ -1,4 +1,4 @@
-# AlwaysOnPractice
+# AlwaysOnExercise
 
 **III. Join MS SQL Database Server to Domain & Create a Windows Failover Cluster**
 <br/>
