@@ -1,6 +1,6 @@
 # AlwaysOnExercise
 
-**IV. Install & Configure SQL Server & SSMS on virtual Machines**
+**IV. Install & Configure SQL Server & SSMS on the SQL Server Nodes
 <br/>
 
 **Steps**
