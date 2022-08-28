@@ -92,6 +92,9 @@ Install-ADDSForest `
 
 You will be ask to type the password twice. After that, it will restart automatically. <br/>
 
+![image](https://user-images.githubusercontent.com/95063830/187054079-687ac2dc-684b-478b-9d17-8ff285f9ac39.png)
+
+
 16. AD Forest (HJCDOM) successfully installed!
 
 ![image](https://user-images.githubusercontent.com/95063830/171442420-fcc580be-efbe-4d93-8190-9d8cef2df2d1.png)
