@@ -198,6 +198,8 @@ In the Permissions list, find and select "Create Computer Objects" then click OK
 
 Save every changes that you've made.
 
+You can also, create a virtual machine checkpoint or create a windows server backup for disaster recovery purposes.
+
 
 **Next Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
