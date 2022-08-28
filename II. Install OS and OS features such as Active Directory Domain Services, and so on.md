@@ -95,11 +95,36 @@ You will be ask to type the password twice. After that, it will restart automati
 ![image](https://user-images.githubusercontent.com/95063830/187054093-80c3b3fa-9239-474e-aa1d-0f2263d9fea8.png)
 
 
-16. AD Forest (HJCDOM) successfully installed!
+AD Forest (hjcdom.local) successfully promoted!
 
 ![image](https://user-images.githubusercontent.com/95063830/171442420-fcc580be-efbe-4d93-8190-9d8cef2df2d1.png)
 
-17. For post installation procedure, install Windows Server Backup features. Use the PowerShell script below to install it:
+16. If you happen to encounter this DNS issue (preferred DNS address became 127.0.0.1) after Domain promotion, change the preferred DNS address to the actual IPv4 address of the server. Then run ipconfig /flushdns & ipconfig /registerdns and restart DNS services.
+
+![image](https://user-images.githubusercontent.com/95063830/187054320-30579760-96aa-4fab-80c7-8481c7506524.png)
+![image](https://user-images.githubusercontent.com/95063830/187054333-76475b02-bf0f-4cab-8900-302eeea7cf01.png)
+![image](https://user-images.githubusercontent.com/95063830/187054379-ec19c199-6060-4c41-8df9-6183c9867095.png)
+
+
+17. To double check the promotion of AD Forest. Perform the following:
+
+Run Windows+R (run), browse \\localhost or \\servername. A succesful and good AD promotion should have 2 shared folders (NETLOGON & SYSVOL).
+
+![image](https://user-images.githubusercontent.com/95063830/187054469-64a73bda-1ec6-446a-86fb-69ef414dbb60.png)
+
+![image](https://user-images.githubusercontent.com/95063830/187054476-c08a7468-91fe-466e-8dd0-f4852b4491d0.png)
+
+
+On the Event Viewer\Application and Services Logs\DFS Replication, look for **Event ID 4602**. This event log is one way to confirm if AD promotion is good and succesful.
+
+![image](https://user-images.githubusercontent.com/95063830/187054560-4ad58ef5-6a59-471d-bb0c-6705d04dbbd3.png)
+
+Here's the Event ID 4602 log's content:
+
+![image](https://user-images.githubusercontent.com/95063830/187054597-29e80550-42ed-4430-95ea-8abda1850832.png)
+
+
+18. For post installation procedure, install Windows Server Backup features. Use the PowerShell script below to install it:
 
 ```PowerShell
 Install-WindowsFeature Windows-Server-Backup
