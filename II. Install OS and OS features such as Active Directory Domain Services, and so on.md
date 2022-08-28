@@ -32,7 +32,7 @@ Windows Server 2016 or 2019 ISO. I use windows server 2016 here, since this is t
 **hjc-sqldr01 = 192.168.10.201/24**  <br/>
 
 9. Repeat the above steps for the 2 remaining virtual machines. <br/>
-10. (Optional) After that, we will now proceed to the needed install Windows Server Roles and Features for this project. Before that, I will that a checkpoints of each virtual machine first. So even an incident happens, I can easily revert the virtual machines before the changes that I've made. To create a checkpoint, navigate to Hyper-Manager, right-click to Virtual Machine and click "Checkpoint". 
+10. (Optional) After that, we will now proceed to the needed install Windows Server Roles and Features for this project. Before that, I will take a checkpoints of each virtual machine first. So even an incident happens, I can easily revert the virtual machines before the changes that I've made. To create a checkpoint, navigate to Hyper-Manager, right-click to Virtual Machine and click "Checkpoint". 
 
 ![image](https://user-images.githubusercontent.com/95063830/171326297-1aa494a6-2735-4677-9a91-f054c4f9262c.png)
 
