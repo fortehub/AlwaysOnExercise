@@ -187,7 +187,7 @@ Right-click on **Servers** OU, navigate to Properties\Security\Advanced.
 
 ![image](https://user-images.githubusercontent.com/95063830/187055349-10b70ba9-3a87-40c9-81e3-6aab57368c05.png)
 
-On the **Advanced Security Settings for Servers** click the**Add** button. Navigate to Principal\Object Types\ and uncheck all selection but check the *Computer* object types only. Click OK after. And in the "Enter the object name to select"", type in the network name of the Windows failover cluster (refer to step #21).
+On the **Advanced Security Settings for Servers** click the **Add** button. Navigate to Principal\Object Types\ and uncheck all selection but check the *Computer* object types only. Click OK after. And in the "Enter the object name to select"", type in the network name of the Windows failover cluster (refer to step #21).
 Click OK after.
 
 ![image](https://user-images.githubusercontent.com/95063830/187055518-edf71656-2be2-4afe-9f52-c0fc440f94c6.png)
