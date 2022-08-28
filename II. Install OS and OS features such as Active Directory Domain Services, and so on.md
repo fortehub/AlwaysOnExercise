@@ -168,7 +168,7 @@ Click **File** and click **Save As**, save this mmc to desktop, and name it on y
 
 ![image](https://user-images.githubusercontent.com/95063830/187054986-9bacdddd-b5c3-4248-9465-6ab5295a92f1.png)
 
-Create & Registers the following computers: <br/>
+Create & Register the following computers: <br/>
 **hjc-sqlpod** = network/server name of Primary SQL Server ReplicaInstance/Instance/Node <br/>
 **hjc-sqldr01** = network/server name of Secondary SQL Server ReplicaInstance/Node       <br/>
 **hjc-wfcluster** = network name of windows failover cluster   <br/>
