@@ -21,7 +21,7 @@ Follow this guide to configure firewall for SQL Server, [Configure the Windows F
  
 Perform this on the 3 server.
 
-2. Change the Preferred DNS addresses of the MS SQL Database Servers, match with the IPv4 Address of the Domain Controller (hjc-adprod). 
+2. Change the Preferred DNS addresses of the MS SQL Server Replica servers, match with the IPv4 Address of the Domain Controller (hjc-adprod). 
 
 ![image](https://user-images.githubusercontent.com/95063830/172056382-1406bdb8-7f1e-4d1a-bd51-596b61bb4257.png)
 
@@ -33,15 +33,7 @@ ipconfig /registerdns
 ```
 ![image](https://user-images.githubusercontent.com/95063830/172056509-06c95782-a0d4-46f1-ba38-432cda8111be.png)
 
-
-3. [Optional] On the Domain Controller side (hjc-adprod), add new OU (Organization Unit) for the SQL Server on the ADUC (Active Directory Users and Computers).
-
-![image](https://user-images.githubusercontent.com/95063830/172057337-d5fa251f-a205-4596-9d8a-5044997b7137.png)
-
-Get the Distinguised name of the OU we have just created. We need this for the next step. To get the Distinguised name, follow this guide, [How to find the distinguishedName of an OU.](https://support.xink.io/support/solutions/articles/1000246165-how-to-find-the-distinguishedname-of-an-ou-)
-
-
-4. Join the MS SQL Database Servers to join. To join, perform the following CMDlets below:
+3. Join the MS SQL Database Servers to join. To join, perform the following CMDlets below:
 
 ```PowerShell
 Add-Computer -DomainName "the domain name" -Credential HJCDOM\Administrator -OUPath "OU=SQL Server,OU=SQL Server,DC=hjcdom,DC=local" -Restart
@@ -54,13 +46,13 @@ Type in the Domain credential/Password:
 
 The server will restart automatically after joining successfully.
 
-5. Repeat the steps for the 2nd MSSQL Database Server.<br/>
+4. Repeat the steps for the 2nd MSSQL Database Server.<br/>
 <br/>
+
+------------------------------------------------------------------------------------------------------------------------------------
 <br/>
 
-
-
-**Creating a Windows Failover Cluster**
+**Create a Windows Failover Cluster**
 
 1. Open PowerShell and run the following CMDlet below on the 2 Database Server, to install WFC (Windows Failover Clustering) roles.
 
