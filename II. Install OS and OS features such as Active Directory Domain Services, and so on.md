@@ -81,7 +81,7 @@ Install-ADDSForest `
 -DatabasePath "C:\Windows\NTDS" `
 -DomainMode "Win2012R2" `
 -DOmainName "type here the name of your domain" `
--DomainNetBiosName 'type here the name of your domain in Capital Letters" `
+-DomainNetBiosName "type here the name of your domain in Capital Letters" `
 -ForestMode "Win2012R2" `
 -InstallDns:$true
 -LogPath "C:\Windows\NTDS" `
