@@ -101,7 +101,24 @@ Where the folder "**D:\mssql\datalogs**" will house the database and log files a
  <br/>
  <br/>
   
-  2. For SSMS Installation, follow this guide, [How To Install Microsoft SQL Server Management Studio (SSMS)?.](https://www.c-sharpcorner.com/article/how-to-install-microsoft-sql-server-management-studio-ssms/)
+3. Open, SQL Server Configuration Manager
+
+First, we must replace the logon account for SQL Server Services. We will going to use in this testing environment the Domain Administrator account. Note, this is not a recommended setup for production environment, create another Domain service account for SQL Server services. Open SQL Server Configuration Manager. 
+
+Go to SQL Services section, and replace the default account with the Domain Administrator for **SQL Server Server & SQL Server Agent** services, then click Apply. Restart the SQL Server services after enabling, in order for the changes to take effect.
+
+![image](https://user-images.githubusercontent.com/95063830/187067120-1af291db-50ad-4f43-b166-bb9da2376f43.png)
+
+Repeat the steps on the 2nd database server (hjc-sqldr01).
+
+Second, enable TCP/IP connections for SQL Server. Go to SQL Server Network Configuration\Protocols for MSSQLSERVER, Select and right-click the TCP/IP protocol name and select "Enable". Restart the SQL Server services after enabling, in order for the changes to take effect.
+
+![image](https://user-images.githubusercontent.com/95063830/187067154-b1c387ca-7783-4e0d-8c06-7435e5556115.png)
+
+Repeat the steps on the 2nd database server (hjc-sqldr01).
+
+4. For SSMS Installation, follow this guide, [How To Install Microsoft SQL Server Management Studio (SSMS)?.](https://www.c-sharpcorner.com/article/how-to-install-microsoft-sql-server-management-studio-ssms/)
+
   
   **Next Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
