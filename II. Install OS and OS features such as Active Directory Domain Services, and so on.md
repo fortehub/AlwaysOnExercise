@@ -172,7 +172,6 @@ Create & Register the following computers: <br/>
 **hjc-sqlpod** = network/server name of Primary SQL Server ReplicaInstance/Instance/Node <br/>
 **hjc-sqldr01** = network/server name of Secondary SQL Server ReplicaInstance/Node       <br/>
 **hjc-wfcluster** = network name of windows failover cluster   <br/>
-**hjc-aglsnr** =  network name of SQL Server AlwaysOn AG (Availability Group)  <br/>
 
 Click OK after.
 
@@ -180,27 +179,11 @@ Click OK after.
 
 ![image](https://user-images.githubusercontent.com/95063830/187055142-03cd080f-07ac-4613-81c8-38d2fbaedbe7.png)
 
-22. Grant "Create Computer Object" permission to **Servers** OU. This permission is a prerequisites to setup SQL Server AlwaysOn AG. On the mmc we have created before, navigate to ADUC, click **View**, select **Advanced Features**. 
-![image](https://user-images.githubusercontent.com/95063830/187055317-f10824da-6c98-4c3f-9b7a-6fe095be037b.png)
-
-Right-click on **Servers** OU, navigate to Properties\Security\Advanced. 
-
-![image](https://user-images.githubusercontent.com/95063830/187055349-10b70ba9-3a87-40c9-81e3-6aab57368c05.png)
-
-On the **Advanced Security Settings for Servers** click the **Add** button. Navigate to Principal\Object Types\ and uncheck all selection but check the *Computer* object types only. Click OK after. And in the "Enter the object name to select"", type in the network name of the Windows failover cluster (refer to step #21).
-Click OK after.
-
-![image](https://user-images.githubusercontent.com/95063830/187055518-edf71656-2be2-4afe-9f52-c0fc440f94c6.png)
-
-In the Permissions list, find and select "Create Computer Objects" then click OK.
-
-![image](https://user-images.githubusercontent.com/95063830/187055560-c15cc45a-06a1-4339-b515-5bea6fae5fcc.png)
-
-23. Create service account for SQL server. To create a service account follow this procedures [Configure Managed Service Accounts for SQL Server Always On Availability Group](https://www.sqlshack.com/configure-managed-service-accounts-for-sql-server-always-on-availability-groups/). This is the recommended setup, but in this demo we will just use the AD Domain "Administrator" account instead though this is not recommended on production environment. <br/>
+22. Create service account for SQL server. To create a service account follow this procedures [Configure Managed Service Accounts for SQL Server Always On Availability Group](https://www.sqlshack.com/configure-managed-service-accounts-for-sql-server-always-on-availability-groups/). This is the recommended setup, but in this demo we will just use the AD Domain "Administrator" account instead though this is not recommended on production environment. <br/>
 
 Add AD Domain Administrator account to "Logon as a Service". Navigate Group Policy Management\Forest, right-click and click Edit on "Default Domain Policy". Now, navigate to Computer configuration\Policies\Windows Settings\Security Settings\User Rights Assignment and right-click the "Logon as a Service" policy. On the "Logon as a Service" properties, check the "Define these policy settings", click the "Add User or Group" button and browse the "**Administrator**'' account. Click Apply and OK after.
 
-24. Open PowerShell, and run the following:
+23. Open PowerShell, and run the following:
 
 ```PowerShell
 gpupdate /force
