@@ -43,7 +43,7 @@ A checkpoint has created for hjc-adprod virtual machines. Repeat the steps for o
 11. Install .NET Frameworks on the 3 servers. Open PowerShell and run the following command.
 
 ```PowerShell
-Add-WindowsFeatures NET-Framework-Features -Source E:\sources\sxs
+Add-WindowsFeature NET-Framework-Features -Source E:\sources\sxs
 ```
 
 Succesfully installed!
