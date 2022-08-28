@@ -196,6 +196,19 @@ In the Permissions list, find and select "Create Computer Objects" then click OK
 
 ![image](https://user-images.githubusercontent.com/95063830/187055560-c15cc45a-06a1-4339-b515-5bea6fae5fcc.png)
 
+23. Create service account for SQL server. To create a service account follow this procedures [Configure Managed Service Accounts for SQL Server Always On Availability Group](https://www.sqlshack.com/configure-managed-service-accounts-for-sql-server-always-on-availability-groups/). This is the recommended setup, but in this demo we will just use the AD Domain "Administrator" account instead though this is not recommended on production environment. <br/>
+
+Add AD Domain Administrator account to "Logon as a Service". Navigate Group Policy Management\Forest, right-click and click Edit on "Default Domain Policy". Now, navigate to Computer configuration\Policies\Windows Settings\Security Settings\User Rights Assignment and right-click the "Logon as a Service" policy. On the "Logon as a Service" properties, check the "Define these policy settings", click the "Add User or Group" button and browse the "**Administrator**'' account. Click Apply and OK after.
+
+24. Open PowerShell, and run the following:
+
+```PowerShell
+gpupdate /force
+```
+
+![image](https://user-images.githubusercontent.com/95063830/187056491-fd153d32-ba72-474e-b8fa-59aaeed7d7fa.png)
+
+
 Save every changes that you've made.
 
 You can also, create a virtual machine checkpoint or create a windows server backup for disaster recovery purposes.
