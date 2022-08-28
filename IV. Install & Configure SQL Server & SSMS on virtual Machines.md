@@ -12,11 +12,11 @@
 2. Create folders on both SQL Database Server for  Database Files, Log Files & Backup files. You can use the commands below to create a folder by using CMD or PowerShell.
 
 ```PowerShell
-mkdir d:\mssql\datalogs,d:\mssql\backups
+mkdir D:\mssql\datalogs,E:\mssql\backups
 ```
-![image](https://user-images.githubusercontent.com/95063830/172392986-4dc3245b-8810-4bb2-b286-21dd26c70fef.png)
+![image](https://user-images.githubusercontent.com/95063830/187057514-d7dbe9d6-5ded-4d35-80cb-606cb3e11b75.png)
 
-Where the folder "d:\mssql\datalogs" will house the database and log files and "d:\mssql\backups" for database backups. Please be note, this is only a testing environment, that this folders setup is not a recommended setup. Database & Log Files, and backups should be put on a separate disks to avoid disk contention and utilization problems.
+Where the folder "**D:\mssql\datalogs**" will house the database and log files and "**E:\mssql\backups**" for database backups. Please be note, this is only a testing environment, that this folders setup is not a recommended setup. **Database, Transact Log Files, Temp files, and Backups** should be put on a separate disks to avoid disk contention and utilization problems.
 
 3. Follow the images below for the installation of SQL Server Developer Edition.
  <br/>
@@ -60,7 +60,8 @@ Where the folder "d:\mssql\datalogs" will house the database and log files and "
  <br/>
  <br/>
   
-  *Set the SQL Server Agent and SQL Server Database Engine Startup Type to "Automatic". Then click Next*  <br/>
+  *Set the SQL Server Agent and SQL Server Database Engine Startup Type to "Automatic". Then click Next*. [Optional] if needed, you can check the[ Grant Perform Volume Maintenance Task](https://docs.microsoft.com/en-us/sql/relational-databases/databases/database-instant-file-initialization?redirectedfrom=MSDN&view=sql-server-ver16)  <br/>
+  
   ![image](https://user-images.githubusercontent.com/95063830/172398434-b5b6b7c4-208a-4a28-a4f3-9c586434de80.png)
  <br/>
  <br/>
@@ -70,8 +71,8 @@ Where the folder "d:\mssql\datalogs" will house the database and log files and "
  <br/>
  <br/>
   
-  *At the Data Directories section, change the path of User Database & Log directories as well as the backup. We're gonna use the folders we've created a while ago.* <br/>
-  ![image](https://user-images.githubusercontent.com/95063830/172399284-060bbb33-51b2-4e99-af98-8b85fb08c404.png)
+  *At the Data Directories section, change the path of User Database & Log directories as well as the backup. We're gonna use the folders we've created earlier.* <br/>
+ ![image](https://user-images.githubusercontent.com/95063830/187057669-49789a76-7f50-4cc0-8d72-7d4aad88a23b.png)
  <br/>
  <br/>
   
@@ -85,8 +86,8 @@ Where the folder "d:\mssql\datalogs" will house the database and log files and "
  <br/>
  <br/>
   
-  *Check the Recommended and the Click here to accept button*  <br/>
-  ![image](https://user-images.githubusercontent.com/95063830/172400075-1c1b16fd-1227-4e2c-816b-75e29ea72237.png)
+  *Check the Recommended and the Click here to accept button*. My preferences for Max Memory configuration, is the 85% of total system Memory (4096 MB) <br/>
+![image](https://user-images.githubusercontent.com/95063830/187057989-6a79e134-43e9-4ee2-aeff-4307cd8abedb.png)
  <br/>
  <br/>
   
