@@ -1,6 +1,6 @@
 # AlwaysOnExercise
 
-**II. Install OS and OS features such as Active Directory Domain Services, and so on**
+**II. Install OS and OS features such as Active Directory Domain Services**
 <br/>
 
 **Resources**
