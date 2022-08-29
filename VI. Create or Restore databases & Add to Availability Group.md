@@ -52,7 +52,7 @@ If everything is fine, you will see the database BikeStores appears under Databa
 <br/>
 <br/>
 
-**B5.** Click the Execute button to execute the SQL script. Make you have selected the right database (square-highlighted in the image below).
+**B5.** Click the Execute button to execute the SQL script. Make sure you have selected the right database (square-highlighted in the image below).
 <br/>
 ![image](https://user-images.githubusercontent.com/95063830/187196966-6d9328c2-8c8c-456b-85f6-1b4265b04e08.png)
 
