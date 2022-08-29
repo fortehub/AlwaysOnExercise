@@ -89,7 +89,7 @@ GO
 ![image](https://user-images.githubusercontent.com/95063830/172414076-b40dcf22-a0c4-4e59-87c9-6b53c68cd70f.png)
 <br/>
 
-2. Open SSMS, make sure all the databases (system & user databases, except TempDB) are in "Full Recovery" model. Full recovery model is required to setup Availability Group. Right on each databases, click Properties\Options, and change the "Recovery Model" to "**Full**".
+2. Open SSMS, make sure all the databases (system & user databases, except TempDB) are in "Full Recovery" model. Full recovery model is required to setup Availability Group. Right click on each databases, click Properties\Options, and change the "Recovery Model" to "**Full**".
 
 ![image](https://user-images.githubusercontent.com/95063830/187068039-e872f017-6181-4327-9015-601c0fb96c7f.png)
 
