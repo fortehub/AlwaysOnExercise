@@ -131,8 +131,26 @@ Wait for the restoration. <br/>
 
 Restore successfully! <br/>
 ![image](https://user-images.githubusercontent.com/95063830/187204950-04353ecf-308b-49df-9136-ebfdd1667441.png)
+
+Database Added!  <br/>
+![image](https://user-images.githubusercontent.com/95063830/187207830-d8b20b1b-753a-46bb-91ec-d2af5c7701ff.png)
 <br/>
 <br/>
+
+**C6.** Query anything on the two database. Use SQL SELECT statements below:
+```SQL
+USE BikeStores
+
+SELECT * FROM production.categories;
+GO
+
+USE WideWorldImporters
+
+SELECT * from Application.People;
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187208469-6b01c97b-0265-44d9-aa38-f388f20e5359.png)
+
 
 
 
