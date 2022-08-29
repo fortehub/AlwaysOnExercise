@@ -109,6 +109,12 @@ Click OK after.
 
 ![image](https://user-images.githubusercontent.com/95063830/187055518-edf71656-2be2-4afe-9f52-c0fc440f94c6.png)
 
+![image](https://user-images.githubusercontent.com/95063830/187127768-86efb9d6-e464-41bf-a1e4-90c06ec55c0e.png)
+
+Click the **Advanced** button to go to "Advanced Security Settings for Servers". Click the **Add** button again to go "Permission Entry for Servers", click "Principal" then set "Object Types" to "Computer" only again, then find the CNO (the virtual network name of the cluster)
+
+![image](https://user-images.githubusercontent.com/95063830/187128163-78df953e-e1e4-4898-8dfe-2d2a7f215d6e.png)
+
 In the Permissions list, find and select "Create Computer Objects" then click OK.
 
 ![image](https://user-images.githubusercontent.com/95063830/187055560-c15cc45a-06a1-4339-b515-5bea6fae5fcc.png)
