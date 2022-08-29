@@ -150,9 +150,62 @@ SELECT * from Application.People;
 GO
 ```
 ![image](https://user-images.githubusercontent.com/95063830/187208469-6b01c97b-0265-44d9-aa38-f388f20e5359.png)
+<br/>
+<br/>
+<br/>
 
+ **D. Add the database to Availability Group**
+ ------------------------------------------------------------------------------------------------------------------------------------
+**D1.** On the new 2 database, set the "Recovery Model" from Simple to "**FULL**". Run the following T-SQL:
+```
+USE master
 
+ALTER DATABASE [BikeStores] SET RECOVERY FULL;
+ALTER DATABASE [WideWorldImporters] SET RECOVERY FULL;
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187209743-12a8a91d-2d8b-416f-9dae-752b6dedbc89.png)
+<br/>
+<br/>
 
+**D2.** Double-check by running the following T-SQL:
+```T-SQL
+SELECT 
+name AS [Database Name],
+recovery_model_desc AS [Recovery Model] 
+FROM sys.databases
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187210501-ed258d27-8479-4134-a6c6-fc1b704bafc7.png)
 
+Or use the GUI. Right-click on each databases, click Properties\Options, and change the "Recovery Model" to "Full". <br/>
+![image](https://user-images.githubusercontent.com/95063830/187210891-7e5eb1a8-814f-472a-a5a2-adf70fe98b1f.png)
+![image](https://user-images.githubusercontent.com/95063830/187210967-b9403558-f7ed-4341-89c1-154bd08ce8b7.png)
+<br/>
+<br/>
+
+**D3.** Create Full Database backup. Esxecute the following T-SQL to perform a full DB backup.
+```
+USE master
+
+BACKUP DATABASE [WideWorldImporters]
+TO  DISK = N'E:\mssql\backups\WideWorldImporters-FullDB.bak' WITH NOFORMAT, NOINIT, 
+NAME = N'WideWorldImporters-FULLDB-08292022';
+GO
+
+BACKUP DATABASE [BikeStores]
+TO  DISK = N'E:\mssql\backups\BikeStores-FullDB.bak' WITH NOFORMAT, NOINIT, 
+NAME = N'BikeStores-FULLDB-08292022';
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187212298-d21d5056-6962-4ef3-a450-faa87e1048a8.png)
+<br/>
+<br/>
+
+**D4.** For backing up using the GUI, follow this, [How to create a simple database backup using SSMS?](https://www.mssqltips.com/sqlservertip/2968/how-to-create-a-simple-database-backup-using-sql-server-management-studio-ssms/)
+<br/>
+<br/>
+
+**D5.**
 
 
