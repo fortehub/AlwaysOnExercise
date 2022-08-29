@@ -136,10 +136,7 @@ Click the Add Replica button and add the 2nd SQL Server Instance (hjc-sqldr01). 
 
 ![image](https://user-images.githubusercontent.com/95063830/173295832-bd6a5c1f-f88e-4654-9cb4-c21939a5f94b.png)
 
-Copy the configuration of the 1st SQL Server Instance.
-
-![image](https://user-images.githubusercontent.com/95063830/187069914-341aa27b-0800-4761-a528-62de8f698f19.png)
-
+![image](https://user-images.githubusercontent.com/95063830/187128860-edaded1e-cd61-4cd8-8731-e0c867dffb4e.png)
 
 Leave the default configuration for "Backup Preferences" which is "Prefer Secondary". We can skip the "Listener" creation and do it later. Set aside Read-Only Routing, we don't need in this setup. Click Next to proceed.
 <br/>
@@ -157,49 +154,22 @@ Leave the default configuration for "Backup Preferences" which is "Prefer Second
 
 10. Click Finish
 
+Using Automatic Seeding
+![image](https://user-images.githubusercontent.com/95063830/187128961-7e9bf7a3-a21f-4ad7-8a2c-dd6070574666.png)
+
+Using Full Database and log backup
 ![image](https://user-images.githubusercontent.com/95063830/187070330-41e40feb-2520-4702-b297-8b86ad3e305d.png)
 
 11. Done!
 
 ![image](https://user-images.githubusercontent.com/95063830/187070399-db1ce453-1e6a-4d4a-8238-9ef06fb13ac4.png)
 
+![image](https://user-images.githubusercontent.com/95063830/187129541-3b0e5da4-3c7a-4b3f-98c6-68ce8fc2757b.png)
+
 ![image](https://user-images.githubusercontent.com/95063830/173297853-62384730-3a20-47d8-aec3-33ba9923a9aa.png)
 <br/>
 
-12. Before we create the AG listener, Go to hjc-adprod, grant the computer object associated with the cluster group 'create computer objects' rights in Active Directory as per this link [Failover Cluster Step-by-Step Guide: Configuring Accounts in Active Director.](ttps://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731002(v=ws.10)?redirectedfrom=MSDN#BKMK_steps_precreating)<br/>
-
-Follow the images below:
-
-Click Properties
-
-![image](https://user-images.githubusercontent.com/95063830/173306358-61eb21b1-8e03-45a5-a83e-27f1d1c1ce65.png)
-
-Go to Security, click Advanced button.
-
-![image](https://user-images.githubusercontent.com/95063830/173306570-a56d79e6-d7ae-4b3a-8b11-6464059dcfd0.png)
-
-Click Add button
-
-![image](https://user-images.githubusercontent.com/95063830/173306663-895d9684-c072-4d56-b29d-10f159b5faf6.png)
-
-Click "Select Principal"
-
-![image](https://user-images.githubusercontent.com/95063830/173306757-c95ecfee-ddd7-41ee-af90-ea5d7cfbe709.png)
-
-Click Object Types, and check Computers only.
-
-![image](https://user-images.githubusercontent.com/95063830/173306887-0bcf57d0-e739-4a85-9bbb-8711ed861357.png)
-
-Type in the Cluster Name object if you know the name, else click Advance >> Find Now buttons and search the Computer cluster account. After that, click OK.
-
-![image](https://user-images.githubusercontent.com/95063830/173307196-80afb41e-ebc3-4a02-8fb4-70ce8efeb7d8.png)
-
-In the Permissions list, find and select "Create Computer Objects" then click OK. Go to hjc-sqlprod instance and restart then validate the cluster
-
-![image](https://user-images.githubusercontent.com/95063830/173308982-5f4666c6-4f1d-47fc-ba6f-8a0297145ee3.png)
-<br/>
-
-13.Create AG listener. Go to "Always On High Availability" section, expand the group that we have created earlier. Right-click on the "Availability Group Listeners" and select "Add Listener".
+12.Create AG listener. Go to "Always On High Availability" section, expand the group that we have created earlier. Right-click on the "Availability Group Listeners" and select "Add Listener".
 
 ![image](https://user-images.githubusercontent.com/95063830/173298171-a6efc5ed-01c7-48fa-bda3-1be44f43e377.png)
 
@@ -207,11 +177,26 @@ Follow the image below. Provide Listener DNS Name, it should be unique. Port is 
 
 ![image](https://user-images.githubusercontent.com/95063830/173298957-187a02b3-2e78-4bc6-8f04-29e28f2c00d2.png)
 
+Or you can use the T-SQL below to create the AlwaysON AG Listener
+
+```T-SQL
+USE [master]
+GO
+ALTER AVAILABILITY GROUP [hjc-alwaysgrp]
+ADD LISTENER N'hjc-aglsnr' (
+WITH IP
+((N'192.168.10.150', N'255.255.255.0')
+)
+, PORT=1433);
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187129788-8a51dd59-bd98-4837-adab-4ac5bba48ec1.png)
+
 AG Listener created successfully!
 
 ![image](https://user-images.githubusercontent.com/95063830/187126753-90c0695a-10ef-449a-8ad1-5836300258d6.png)
 
-14. Try to ping the network name or ip address of the AG listner. Also try to connect to SQL Server using the network name of of AG Listener.
+13. Try to ping the network name or ip address of the AG listner. Also try to connect to SQL Server using the network name of of AG Listener.
 
 ![image](https://user-images.githubusercontent.com/95063830/173309765-00b545ef-497f-4821-acba-385fee7ef515.png)
 
