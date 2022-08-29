@@ -1,13 +1,13 @@
 # AlwaysOnExercise
 
-**V. Add a sample database and Setup AlwaysON AG features**
+**V. Add a sample database & Setup AlwaysON AG features**
 <br/>
 
 **Resources**
 ------------------------------------------------------------------------------------------------------------------------------------
 1. Download the AdventureWorks Sample databases here, [AdventureWorks sample databases.](https://docs.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms)
  
-We are going the 2016 & 2019 version of AdventureWorks database.  <br/>
+We are going the use the 2016 & 2019 version of AdventureWorks database.  <br/>
 
 **Steps**
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -15,57 +15,98 @@ We are going the 2016 & 2019 version of AdventureWorks database.  <br/>
 
 1. Restore the 2 databases on hjc-sqlprod server only. We can use the GUI to restore a database [Restore a Database](https://www.quackit.com/sql_server/sql_server_2016/tutorial/restore_a_database_in_sql_server_2016.cfm), or follow the T-SQL script below.
 
-```SQL
+First, get the database logical names from the backup:
+
+```T-SQL
 Use master
+Go
+
+RESTORE FILELISTONLY from disk = N'C:\Users\administrator.HJCDOM\Downloads\AdventureWorks2016.bak';
+RESTORE FILELISTONLY from disk = N'C:\Users\administrator.HJCDOM\Downloads\AdventureWorks2019.bak';
+Go
+```
+
+![image](https://user-images.githubusercontent.com/95063830/187068848-53eb8dfc-0dc2-45d4-b416-26e08a160470.png)
+
+Second, Perform the following T-SQL Script to restore the databases.
+
+```T-SQL
+Use master
+Go
+
+Restore Database [AdventureWorks2016] from disk = 'C:\Users\administrator.HJCDOM\Downloads\AdventureWorks2016.bak' With File = 1,
+Move N'AdventureWorks2016_Data' To N'D:\mssql\datalogs\AdventureWorks2016_Data.mdf',
+Move N'AdventureWorks2016_Log' To N'D:\mssql\datalogs\AdventureWorks2016_log.mdf'
+Go
+
+Restore Database [AdventureWorks2019] from disk = 'C:\Users\administrator.HJCDOM\Downloads\AdventureWorks2019.bak' With File = 1,
+Move N'AdventureWorks2017' To N'D:\mssql\datalogs\AdventureWorks2019_Data.mdf',
+Move N'AdventureWorks2017_log' To N'D:\mssql\datalogs\AdventureWorks2019_log.mdf'
+Go
+```
+Database Restoration Complete!
+
+![image](https://user-images.githubusercontent.com/95063830/187068889-133a4528-7ce9-4eb2-a016-381c4415faa3.png)
+
+Third, change the "Recovery Model" from Simple to **Full** of the 2 database that we have restored. You can choose via T-SQL or GUI for this. For GUI [How to Change MS SQL Database Recovery Model?](https://manage.accuwebhosting.com/knowledgebase/2425/How-to-Change-MS-SQL-Database-Recovery-Model.html)
+
+For T-SQL, follow the script below.
+```T-SQL
+USE master
 GO
 
-Restore Database [AdventureWorks2016] from disk = 'D:\mssql\backups\AdventureWorks2016.bak' With File = 1, 
-Move N'D:\mssql\datalogs\AdventureWorks2016_Data.mdf', 
-Move N'D:\mssql\datalogs\AdventureWorks2016_log.mdf'
+ALTER DATABASE [AdventureWorks2016] SET RECOVERY FULL;
+ALTER DATABASE [AdventureWorks2019] SET RECOVERY FULL;
 GO
 ```
 
-Database Restoration Complete!
-![image](https://user-images.githubusercontent.com/95063830/172409617-a189dfbc-1ab4-4d73-a696-80ed833f455c.png)
+Fourth, create a Full Database backup (This is needed for Always On AG Setup). Follow the T-SQL script below to perform a Full Database backup. Backup using GUI, follow this [SQL Server Full Backup.](https://www.sqlservertutorial.net/sql-server-administration/sql-server-full-backup/)
 
-Repeat the steps above for AdventureWorks2019 database!
+```T-SQL
+USE MASTER;
+GO
+
+BACKUP DATABASE [AdventureWorks2016]
+TO DISK = N'E:\mssql\backups\AdventureWorks2016.bak' WITH NOFORMAT,
+NAME = N'AdventureWorks2016-08282022-FullDB';
+GO
+
+BACKUP DATABASE [AdventureWorks2019]
+TO DISK = N'E:\mssql\backups\AdventureWorks2019.bak' WITH NOFORMAT,
+NAME = N'AdventureWorks2019-08282022-FullDB';
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187069344-55624048-6777-4e0f-8c9e-a660eaf1b26b.png)
+
+
 <br/>
 <br/>
-
 
 **Setup AlwaysON Availability Group**
-1. First, we must replace the logon account for SQL Server Services. We will going to use in this testing environment the Domain Administrator account. Note, this is not a recommended setup for production environment, create another Domain service account for SQL Server services. 
 
-Open SQL Server Configuration Manager. Go to SQL Services section, and replace the default account with the Domain Administrator for SQL Server Server & SQL Server Agent servces, then click Apply.
-
-![image](https://user-images.githubusercontent.com/95063830/172411363-327038ec-a6f8-451a-800b-56cb45bbed3d.png)
-
-Repeat the steps on the 2nd database server (hjc-sqldr01).
-<br/>
-
-2. Enable TCP/IP connections for SQL Server. Go to SQL Server Network Configuration\Protocols for MSSQLSERVER, Select and right-click the TCP/IP protocol name and select "Enable". Restart the SQL Server services after enabling to take effect the changes.
-
-![image](https://user-images.githubusercontent.com/95063830/172412797-52f994d7-6b80-46be-a9b1-dcc7039f267e.png)
-<br/>
-
-3. At the SQL Server Configuration\SQL Server Services, right-click SQL Server(MSSQLSERVER), go to "AlwaysOn Availability Groups" section and check the Enable button. Click apply and OK. Repeat this on the 2nd Database Server (hjc-sqldr01). Restart the SQL Server services to take effect.
+1. At the SQL Server Configuration\SQL Server Services, right-click SQL Server(MSSQLSERVER), go to "AlwaysOn Availability Groups" section and check the Enable button. Click apply and OK. Repeat this on the 2nd Database Server (hjc-sqldr01). Restart the SQL Server services to take effect.
 
 ![image](https://user-images.githubusercontent.com/95063830/172414076-b40dcf22-a0c4-4e59-87c9-6b53c68cd70f.png)
 <br/>
 
-4. Back to SSMS, right-click on the Always-On High Availability section and select "New Availability Group Wizard".
+2. Open SSMS, make sure all the databases (system & user databases, except TempDB) are in "Full Recovery" model. Full recovery model is required to setup Availability Group. Right on each databases, click Properties\Options, and change the "Recovery Model" to "**Full**".
+
+![image](https://user-images.githubusercontent.com/95063830/187068039-e872f017-6181-4327-9015-601c0fb96c7f.png)
+
+![image](https://user-images.githubusercontent.com/95063830/173293196-5514ce4e-6364-495b-8733-3bd556d3772d.png)
+
+3. Back to SSMS, right-click on the Always-On High Availability section and select "New Availability Group Wizard".
 
 ![image](https://user-images.githubusercontent.com/95063830/173292528-ad5f23e9-0de6-4f36-9013-40cf19f06da9.png)
 <br/>
 
-5. Provide an AG name, then click Next.
- 
-![image](https://user-images.githubusercontent.com/95063830/173292764-dd9be221-4d11-41c2-a094-8265d207b8fb.png)
-<br/>
+4. Provide an AG name, then click Next.
+5. 
+![image](https://user-images.githubusercontent.com/95063830/187069684-898e2dcc-9251-4d64-a082-b698239b12f2.png)
 
 Note: Make sure all the database is in "Full Recovery" model. Full recovery model is required to setup Availability Group.
 
-![image](https://user-images.githubusercontent.com/95063830/173293196-5514ce4e-6364-495b-8733-3bd556d3772d.png)
+
 <br/>
 
 6. Create a database backup first for each databases, to proceed on this step. In the image below, AdventureWorks2016 does not a have a database backup, so we are going to take a backup of this particular database.
@@ -74,12 +115,7 @@ Note: Make sure all the database is in "Full Recovery" model. Full recovery mode
 
 In the image above, AdventureWorks2016 does not a have a database backup, so we are going to take a backup of this particular database. You can [perform database backup thru the GUI](https://www.mssqltips.com/sqlservertutorial/7/sql-server-full-backups/) , but we can also perform using T-SQL. To perform backup, follow the T-SQL script below:
 
-```T-SQL
-BACKUP DATABASE [AdventureWorrks2016]
-TO DISK = N'D:\mssql\backups\AdventureWorks2016.bak' WITH NOFORMAT,
-NAME = N'AdventureWorks2016-FullDatabase Backup'
-GO
-```
+
 
 ![image](https://user-images.githubusercontent.com/95063830/173294496-5a6a4562-b156-46d1-920d-5d3041292413.png) <br/>
 Backup also complete!
@@ -92,7 +128,7 @@ Now click the "Refresh" button to update the Status. It should be ok now. Check 
 
 7. Follow the images below for the Replicas steps.
 
-Check the Automatic Failover (Up to 5), Availability Mode is Synchronous commit, Readable Secondary is Yes. Click the Add Replica button and add the 2nd SQL Server Instance (hjc-sqldr01).
+Check the Automatic Failover (Up to 5) but this is optional, Availability Mode is Synchronous commit for Primary Replica while Asynchronous for Secondary, Readable Secondary is Yes. Click the Add Replica button and add the 2nd SQL Server Instance (hjc-sqldr01).
 
 ![image](https://user-images.githubusercontent.com/95063830/173295620-92fce8c6-762d-4f4d-ab65-eb37e7cf4f06.png)
 
@@ -102,30 +138,30 @@ Click the Add Replica button and add the 2nd SQL Server Instance (hjc-sqldr01). 
 
 Copy the configuration of the 1st SQL Server Instance.
 
-![image](https://user-images.githubusercontent.com/95063830/181664746-88645c92-4339-4392-b0e4-6bf35f6b68ed.png)
+![image](https://user-images.githubusercontent.com/95063830/187069914-341aa27b-0800-4761-a528-62de8f698f19.png)
 
 
 Leave the default configuration for "Backup Preferences" which is "Prefer Secondary". We can skip the "Listener" creation and do it later. Set aside Read-Only Routing, we don't need in this setup. Click Next to proceed.
 <br/>
 
-8. At the "Select Data Synchronization", you can choose base on your preferences. Here I will choose the default "Automatic seeding". Just make sure both the database, log and backups are in the same path/location for all SQL Server Instance to make this work. Click Next.
+8. At the "Select Data Synchronization", you can choose base on your preferences. Here I will choose the "Automatic seeding" or "Full Database and log backup". Just make sure both the database, log and backups are in the same path/location/folders for all SQL Server Instance to make this work. If you want to use the 2nd option, make the file share is accessible to/by all replicas. Click Next.
+
+![image](https://user-images.githubusercontent.com/95063830/187070101-8d7ed679-360a-4e7c-be84-6eec50e5a0f5.png)
 
 ![image](https://user-images.githubusercontent.com/95063830/173297393-8fb39a17-a9a1-4cbc-9816-ce2214bb1f93.png)
 <br/>
 
 9. Click to Proceed. 
 
-![image](https://user-images.githubusercontent.com/95063830/173297490-c8233fc5-e12a-4a5e-9665-15c29cdadcc7.png)
-<br/>
+![image](https://user-images.githubusercontent.com/95063830/187070307-d73f1176-cbc3-4920-9145-d8a15d2fd76f.png)
 
 10. Click Finish
 
-![image](https://user-images.githubusercontent.com/95063830/173297559-99602737-e3ed-4cf8-8e8a-fdb0f39ad230.png)
-<br/>
+![image](https://user-images.githubusercontent.com/95063830/187070330-41e40feb-2520-4702-b297-8b86ad3e305d.png)
 
 11. Done!
 
-![image](https://user-images.githubusercontent.com/95063830/173297642-9b5e7657-265e-48ab-8377-e9f9918f297d.png)
+![image](https://user-images.githubusercontent.com/95063830/187070399-db1ce453-1e6a-4d4a-8238-9ef06fb13ac4.png)
 
 ![image](https://user-images.githubusercontent.com/95063830/173297853-62384730-3a20-47d8-aec3-33ba9923a9aa.png)
 <br/>
@@ -173,7 +209,7 @@ Follow the image below. Provide Listener DNS Name, it should be unique. Port is 
 
 AG Listener created successfully!
 
-![image](https://user-images.githubusercontent.com/95063830/173309295-9d2a7b54-5832-4abc-b026-3b131a2b7eac.png)
+![image](https://user-images.githubusercontent.com/95063830/187126753-90c0695a-10ef-449a-8ad1-5836300258d6.png)
 
 14. Try to ping the network name or ip address of the AG listner. Also try to connect to SQL Server using the network name of of AG Listener.
 
@@ -184,9 +220,9 @@ AG Listener created successfully!
 
 15. Show the Availability Dashboard to check the status of the AG we have created. Right click on the AG and select Show Dash board.
 
-![image](https://user-images.githubusercontent.com/95063830/173310261-5f057537-326e-43c0-ae31-bdcb2fdca61b.png)
+![image](https://user-images.githubusercontent.com/95063830/187127053-aab29c4a-9be1-48e7-9a21-9e6ae8e75833.png)
 
-![image](https://user-images.githubusercontent.com/95063830/173310352-2ff48307-5616-4b8e-a6fa-44071cb893cb.png)
+![image](https://user-images.githubusercontent.com/95063830/187127025-2b85a0dc-495c-4f65-b5eb-ff2347fdb8e4.png)
 <br/>
 <br/>
 
