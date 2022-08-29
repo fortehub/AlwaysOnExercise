@@ -32,7 +32,7 @@ Step by Step procedure to create SQL Server AlwaysOn Availability Group. Startin
 [**III. Join MS SQL Database Server to Domain & Create a Windows Failover Cluster**](https://github.com/fortehub/AlwaysOnPractice/blob/317c69b5cb15e205538b469f847784d8688564db/III.%20Join%20MS%20SQL%20Database%20Server%20to%20Domain%20&%20Create%20a%20Windows%20Failover%20Cluster.md)
 <br/>
 
-[**IV. Install & Configure SQL Server & SSMS on virtual Machines**](https://github.com/fortehub/AlwaysOnPractice/blob/e77e7461f693bedf89bc4c02019e6ef2189619e6/IV.%20Install%20&%20Configure%20SQL%20Server%20&%20SSMS%20on%20virtual%20Machines.md)
+[**IV. Install & Configure SQL Server & SSMS on both SQL Server Nodes**](https://github.com/fortehub/AlwaysOnPractice/blob/e77e7461f693bedf89bc4c02019e6ef2189619e6/IV.%20Install%20&%20Configure%20SQL%20Server%20&%20SSMS%20on%20virtual%20Machines.md)
 <br/>
 
 [**V. Add a sample database and Setup AlwaysON AG features**](https://github.com/fortehub/AlwaysOnPractice/blob/4d90dfb19c9065f21aee545c1e6741547b82394b/https:/github.com/fortehub/V.%20Add%20a%20sample%20database%20and%20Setup%20AlwaysON%20AG%20features.md)
