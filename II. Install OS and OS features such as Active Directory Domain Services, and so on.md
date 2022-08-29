@@ -171,17 +171,19 @@ Click **File** and click **Save As**, save this mmc to desktop, and name it on y
 Create & Register the following computers: <br/>
 **hjc-sqlpod** = network/server name of Primary SQL Server ReplicaInstance/Instance/Node <br/>
 **hjc-sqldr01** = network/server name of Secondary SQL Server ReplicaInstance/Node       <br/>
-**hjc-wfcluster** = network name of windows failover cluster   <br/>
 
 Click OK after.
 
 ![image](https://user-images.githubusercontent.com/95063830/187055032-150fc415-5b9d-4002-90e5-2d10579e4878.png)
 
-![image](https://user-images.githubusercontent.com/95063830/187055142-03cd080f-07ac-4613-81c8-38d2fbaedbe7.png)
+![image](https://user-images.githubusercontent.com/95063830/187118653-14f89a9d-d369-49f2-a838-be72feb9a2cb.png)
+
 
 22. Create service account for SQL server. To create a service account follow this procedures [Configure Managed Service Accounts for SQL Server Always On Availability Group](https://www.sqlshack.com/configure-managed-service-accounts-for-sql-server-always-on-availability-groups/). This is the recommended setup, but in this demo we will just use the AD Domain "Administrator" account instead though this is not recommended on production environment. <br/>
 
 Add AD Domain Administrator account to "Logon as a Service". Navigate Group Policy Management\Forest, right-click and click Edit on "Default Domain Policy". Now, navigate to Computer configuration\Policies\Windows Settings\Security Settings\User Rights Assignment and right-click the "Logon as a Service" policy. On the "Logon as a Service" properties, check the "Define these policy settings", click the "Add User or Group" button and browse the "**Administrator**'' account. Click Apply and OK after.
+
+![image](https://user-images.githubusercontent.com/95063830/187118826-bb119795-b0ad-4505-b01c-d11c7e54d27a.png)
 
 23. Open PowerShell, and run the following:
 
