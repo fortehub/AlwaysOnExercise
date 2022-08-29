@@ -1,6 +1,6 @@
 # AlwaysOnExercise
 
-**IV. Install & Configure SQL Server & SSMS on the two Nodes
+**IV. Install & Configure SQL Server & SSMS on both SQL Server Nodes**
 <br/>
 
 **Steps**
