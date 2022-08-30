@@ -226,7 +226,6 @@ GO
 
 **D6.** For backing up using the GUI, follow this, [SQL Server Transaction Log Backups.](https://www.mssqltips.com/sqlservertutorial/8/sql-server-transaction-log-backups/)
 <br/>
-<br/>
 
 **D7.** Copy the above backup files to the secondary replica to restore them on that server to prepare the secondary database. <br/>
  <br/>
