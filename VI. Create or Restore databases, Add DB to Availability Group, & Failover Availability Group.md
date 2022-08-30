@@ -1,6 +1,6 @@
 # AlwaysOnExercise
 
-**VI. Create or Restore databases & Add to Availability Group**
+**VI. Create or Restore databases, Add DB to Availability Group, & Failover Availability Group**
 <br/>
 <br/>
 <br/>
