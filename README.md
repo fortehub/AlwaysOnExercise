@@ -42,6 +42,14 @@ Step by Step procedure to create SQL Server AlwaysOn Availability Group. Startin
 <br/>
 <br/>
 
+**D. Note**
+------------------------------------------------------------------------------------------------------------------------------------
+Whenever you go the stages, always switch to  "**main**" branch.
+<br/>
+![image](https://user-images.githubusercontent.com/95063830/187341133-1fec7d69-6afd-43cf-9019-6c717f8a728c.png)
+<br/>
+<br/>
+
 **First Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
 [**I. Create virtual machines using Hyper-V**](https://github.com/fortehub/AlwaysOnPractice/blob/c7a4065279e3cb53f55ff35e9316e5ee341e1d5a/I.%20Create%20virtual%20machines%20using%20Hyper-V.md)
