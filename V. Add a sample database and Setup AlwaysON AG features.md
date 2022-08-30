@@ -146,31 +146,27 @@ Note: Make sure all the database is in "Full Recovery" model. Full recovery mode
 
 **C13.** Click Finish
 <br/>
-
-**C14.** Using Automatic Seeding
+Using Automatic Seeding
 <br/>
 ![image](https://user-images.githubusercontent.com/95063830/187128961-7e9bf7a3-a21f-4ad7-8a2c-dd6070574666.png)
-<br/>
 <br/>
 
 Using Full Database and log backup
 ![image](https://user-images.githubusercontent.com/95063830/187070330-41e40feb-2520-4702-b297-8b86ad3e305d.png)
 
-**C15.**  Done!
-<br/>
 ![image](https://user-images.githubusercontent.com/95063830/187070399-db1ce453-1e6a-4d4a-8238-9ef06fb13ac4.png)
 ![image](https://user-images.githubusercontent.com/95063830/187129541-3b0e5da4-3c7a-4b3f-98c6-68ce8fc2757b.png)
 ![image](https://user-images.githubusercontent.com/95063830/173297853-62384730-3a20-47d8-aec3-33ba9923a9aa.png)
 <br/>
 <br/>
 
-**C15.** Create AG listener. Go to "Always On High Availability" section, expand the group that we have created earlier. Right-click on the "Availability Group Listeners" and select "Add Listener".
+**C14.** Create AG listener. Go to "Always On High Availability" section, expand the group that we have created earlier. Right-click on the "Availability Group Listeners" and select "Add Listener".
 <br/>
 ![image](https://user-images.githubusercontent.com/95063830/173298171-a6efc5ed-01c7-48fa-bda3-1be44f43e377.png)
 <br/>
 <br/>
 
-**C16.** Follow the image below. Provide Listener DNS Name, it should be unique. Port is 1433, Network Mode is Static IP. Click the Add button below to add a Unique Static IP Address. Afterward, click OK.
+**C15.** Follow the image below. Provide Listener DNS Name, it should be unique. Port is 1433, Network Mode is Static IP. Click the Add button below to add a Unique Static IP Address. Afterward, click OK.
 <br/>
 ![image](https://user-images.githubusercontent.com/95063830/173298957-187a02b3-2e78-4bc6-8f04-29e28f2c00d2.png)
 
@@ -192,14 +188,14 @@ AG Listener created successfully!
 <br/>
 <br/>
 
-**C17.** Try to ping the network name or ip address of the AG listner. Also try to connect to SQL Server using the network name of of AG Listener.
+**C16.** Try to ping the network name or ip address of the AG listner. Also try to connect to SQL Server using the network name of of AG Listener.
 <br/>
 ![image](https://user-images.githubusercontent.com/95063830/173309765-00b545ef-497f-4821-acba-385fee7ef515.png)
 ![image](https://user-images.githubusercontent.com/95063830/173309926-61162cea-8860-45d0-bf83-c32dd1bfa670.png)
 <br/>
 <br/>
 
-**C18.** Show the Availability Dashboard to check the status of the AG we have created. Right click on the AG and select Show Dash board.
+**C17.** Show the Availability Dashboard to check the status of the AG we have created. Right click on the AG and select Show Dash board.
 <br/>
 ![image](https://user-images.githubusercontent.com/95063830/187127053-aab29c4a-9be1-48e7-9a21-9e6ae8e75833.png)
 ![image](https://user-images.githubusercontent.com/95063830/187127025-2b85a0dc-495c-4f65-b5eb-ff2347fdb8e4.png)
