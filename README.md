@@ -38,7 +38,7 @@ Step by Step procedure to create SQL Server AlwaysOn Availability Group. Startin
 [**V. Add a sample database and Setup AlwaysON AG features**](https://github.com/fortehub/AlwaysOnPractice/blob/4d90dfb19c9065f21aee545c1e6741547b82394b/https:/github.com/fortehub/V.%20Add%20a%20sample%20database%20and%20Setup%20AlwaysON%20AG%20features.md)
 <br/>
 
-[**VI. Create or Restore databases, Add DB to Availability Group, & Failover Availability Group**](https://github.com/fortehub/AlwaysOnExercise/blob/65422a312329da788816ad6ef1fe9c24412fe213/VI.%20Create%20or%20Restore%20databases%20&%20Add%20DB%20to%20Availability%20Group.md)
+[**VI. Create or Restore databases, Add DB to Availability Group, & Failover Availability Group**](https://github.com/fortehub/AlwaysOnExercise/blob/a1dc1e53ee1fc6841f8e2b361920cbffa0a6ac14/VI.%20Create%20or%20Restore%20databases,%20Add%20DB%20to%20Availability%20Group,%20&%20Failover%20Availability%20Group.md)
 <br/>
 <br/>
 
