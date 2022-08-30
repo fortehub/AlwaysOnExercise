@@ -206,7 +206,7 @@ AG Listener created successfully!
 
 **Next Stage**
 ------------------------------------------------------------------------------------------------------------------------------------
-[**VI. Create or Restore databases & Add DB to Availability Group**](https://github.com/fortehub/AlwaysOnExercise/blob/65422a312329da788816ad6ef1fe9c24412fe213/VI.%20Create%20or%20Restore%20databases%20&%20Add%20DB%20to%20Availability%20Group.md)
+[**VVI. Create or Restore databases, Add DB to Availability Group, & Failover Availability Group**](https://github.com/fortehub/AlwaysOnExercise/blob/a1dc1e53ee1fc6841f8e2b361920cbffa0a6ac14/VI.%20Create%20or%20Restore%20databases,%20Add%20DB%20to%20Availability%20Group,%20&%20Failover%20Availability%20Group.md)
 
 
 
