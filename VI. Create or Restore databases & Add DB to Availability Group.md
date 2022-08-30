@@ -206,6 +206,117 @@ GO
 <br/>
 <br/>
 
-**D5.**
+**D5.** Create Transact Log Backup. Esxecute the following T-SQL to perform a Transact Log Backup.
+```T-SQL
+USE master
+
+BACKUP LOG [BikeStores] 
+TO DISK = N'E:\mssql\backups\BikeStores-TransactLogBackup.trn' WITH INIT,
+NAME = N'BikeStores-TransactLog Backup';
+GO
+
+BACKUP LOG [WideWorldImporters]
+TO DISK = N'E:\mssql\backups\WideWorldImporters-TransactLogBackup.trn' WITH INIT,
+NAME = N'WideWorldImporters-TransactLog Backup';
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187324102-58b44c63-e020-46a2-b9fc-f5a07a835fab.png)
+<br/>
+<br/>
+
+**D6.** For backing up using the GUI, follow this, [SQL Server Transaction Log Backups.](https://www.mssqltips.com/sqlservertutorial/8/sql-server-transaction-log-backups/)
+<br/>
+<br/>
+
+**D7.** Copy the above backup files to the secondary replica to restore them on that server to prepare the secondary database. <br/>
+ <br/>
+Use the following PowerShell cmdlet to copy the needed files. Navigate first to the backup location and perform **cp** (Copy-Item) cmdlet.
+```PowerShell
+cd cd E:\mssql\backups
+ls
+E:\mssql\backups> cp BikeStores-FullDB.bak,BikeStores-TransactLogBackup.trn,WideWorldImporters-FullDB.bak,WideWorldImporters-TransactLogBackup.trn `
+-Destination \\HJC-SQLDR01\e$\mssql\backups
+```
+![image](https://user-images.githubusercontent.com/95063830/187325921-3fc66ac0-781b-4449-8680-4ac02324d453.png)
+
+Traditional copy-pasting to secondary replica (hjc-sqldr01). <br/>
+![image](https://user-images.githubusercontent.com/95063830/187324603-2937bc6c-8f9f-4e4f-b7fc-bd3c91945917.png)
+ 
+Run the below commands to restore the "**Secondary Instance (HJC-SQLDR01)**" with the help of the above copied backup files.<br/>
+
+First, use RESTORE FILELISTONLY:
+```T-SQL
+USE master
+
+RESTORE FILELISTONLY FROM  DISK = N'E:\mssql\backups\BikeStores-FullDB.bak';
+RESTORE FILELISTONLY FROM  DISK = N'E:\mssql\backups\WideWorldImporters-FullDB.bak';
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187327179-aed26985-8f9c-415e-bb0b-013d4f91f83c.png)
+
+```T-SQL
+--RESTORE BikeStores DB Backup
+RESTORE DATABASE [BikeStores]
+FROM DISK = N'E:\mssql\backups\BikeStores-FullDB.bak'
+WITH NORECOVERY,
+MOVE 'BikeStores' TO 'D:\mssql\datalogs\BikeStores.mdf',
+MOVE 'BikeStores_log' TO 'D:\mssql\datalogs\BikeStores_log.ldf'
+GO
+
+--RESTORE BikeStores TransactLog Backup
+RESTORE DATABASE [BikeStores]
+FROM DISK = N'E:\mssql\backups\BikeStores-FullDB.bak'
+WITH NORECOVERY,
+MOVE 'BikeStores' TO 'D:\mssql\datalogs\BikeStores.mdf',
+MOVE 'BikeStores_log' TO 'D:\mssql\datalogs\BikeStores_log.ldf'
+GO
+
+--RESTORE WideWorldImporters DB Backup
+RESTORE DATABASE [WideWorldImporters]
+FROM DISK = 'E:\mssql\backups\WideWorldImporters-FullDB.bak'
+WITH NORECOVERY,
+MOVE 'WWI_Primary' TO 'D:\mssql\datalogs\WideWorldImporters.mdf',
+MOVE 'WWI_UserData' TO 'D:\mssql\datalogs\WideWorldImporters_UserData.ndf',
+MOVE 'WWI_Log' TO 'D:\mssql\datalogs\WideWorldImporters.ldf',
+MOVE 'WWI_InMemory_Data_1' TO 'D:\mssql\datalogs\WideWorldImporters_InMemory_Data_1'
+GO
+
+--RESTORE BikeStores TransactLog Backup
+RESTORE DATABASE [BikeStores]
+FROM DISK = N'E:\mssql\backups\BikeStores-TransactLogBackup.trn'
+WITH NORECOVERY;
+GO
+ 
+--RESTORE WideWorldImporters TransactLog Backup
+RESTORE DATABASE [WideWorldImporters]
+FROM DISK = N'E:\mssql\backups\WideWorldImporters-TransactLogBackup.trn'
+WITH NORECOVERY;
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187329282-17227c33-a208-42cb-93fd-96c85fb5aaf9.png)
+<br/>
+<br/>
+
+**D8.** Once you prepared the secondary database, our next step is to add this database to the AOAG (AlwaysOn Availability Group) configuration. Connect to the primary replica and run the below T-SQL commands to add this newly created database to the Always On Availability Group.
+```T-SQL
+-- Connect to the server instance that hosts the primary replica (HJC-SQLPROD) to add a database to the availability group.  
+ALTER AVAILABILITY GROUP [hjc-alwaysgrp] ADD DATABASE [BikeStores];  
+GO
+
+ALTER AVAILABILITY GROUP [hjc-alwaysgrp] ADD DATABASE [WideWorldImporters];  
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/187329916-55847756-a61e-4c6f-bc0f-38d15249e906.png)
+<br/>
+<br/>
+
+**D9.** Next, we will check and validate this change. We can run the dashboard report or we can also check in SQL Server Management Studio by expanding the respective folders. I checked both ways and you can see the 2 database has been added to this AOAG configuration as shown in the below image.  The AOAG configuration is healthy after adding this database. <br/>
+![image](https://user-images.githubusercontent.com/95063830/187330223-753d122e-507d-467b-9bc2-832a2a928396.png)
+
+For more details, go to [Adding a Database to an existing SQL Server Always ON Configuration](https://www.mssqltips.com/sqlservertip/5437/adding-a-database-to-an-existing-sql-server-always-on-configuration/)
+
+
+
+		
 
 
