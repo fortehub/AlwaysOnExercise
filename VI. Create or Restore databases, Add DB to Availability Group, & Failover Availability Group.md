@@ -313,9 +313,16 @@ GO
 ![image](https://user-images.githubusercontent.com/95063830/187330223-753d122e-507d-467b-9bc2-832a2a928396.png)
 
 For more details, go to [Adding a Database to an existing SQL Server Always ON Configuration](https://www.mssqltips.com/sqlservertip/5437/adding-a-database-to-an-existing-sql-server-always-on-configuration/)
+<br/>
+<br/>
 
-
-
-		
-
+**E. Failover**
+------------------------------------------------------------------------------------------------------------------------------------
+**E1.** Follow this guide for Failover descriptions, & descriptions:
+<br/>
+**a.** [Explore failover types in SQL Server Always On Availability Groups](https://www.sqlshack.com/explore-failover-types-in-sql-server-always-on-availability-groups/#:~:text=Failover%20options%20in%20the%20SQL,database%20online%20to%20accept%20connections.)
+<br/>
+**b.** [Perform a planned manual failover of an Always On availability group (SQL Server](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server.md)
+<br/>	
+**c.** [Manual SQL Server Availability Group Failover](https://www.mssqltips.com/sqlservertip/3437/manual-sql-server-availability-group-failover/)
 
