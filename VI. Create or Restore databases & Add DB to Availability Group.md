@@ -184,7 +184,7 @@ Or use the GUI. Right-click on each databases, click Properties\Options, and cha
 <br/>
 <br/>
 
-**D3.** Create Full Database backup. Esxecute the following T-SQL to perform a full DB backup.
+**D3.** Create Full Database backup. Execute the following T-SQL to perform a full DB backup.
 ```
 USE master
 
