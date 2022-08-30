@@ -50,11 +50,11 @@ Just like a typical newly installed Windows Server, fill in the requirements suc
 **hjc-sqldr01 = 192.168.10.201/24**  <br/>
 <br/>
 
-**B7.** Repeat the above steps for the 2 remaining virtual machines. <br/>
+**B7.** Repeat the above steps for the 2 remaining virtual machines for SQL Server Nodes, but additional Disk Drive **E**.
 <br/>
 
 **B8.** *(Optional)* After that, we will now proceed to the needed install Windows Server Roles and Features for this project. Before that, I will take a checkpoints of each virtual machine first. So even an incident happens, I can easily revert the virtual machines before the changes that I've made. To create a checkpoint, navigate to Hyper-Manager, right-click to Virtual Machine and click "Checkpoint". 
-br/>
+<br/>
 ![image](https://user-images.githubusercontent.com/95063830/171326297-1aa494a6-2735-4677-9a91-f054c4f9262c.png)
 <br/>
 A checkpoint has created for hjc-adprod virtual machines. Repeat the steps for other virtual machines.
@@ -71,6 +71,7 @@ A checkpoint has created for hjc-adprod virtual machines. Repeat the steps for o
 Add-WindowsFeature NET-Framework-Features -Source E:\sources\sxs
 ```
 ![image](https://user-images.githubusercontent.com/95063830/171327635-76bfcc94-89b3-4f65-b43d-3db87b5a0914.png)
+<br/>
 Succesfully installed!
 <br/>
 <br/>
