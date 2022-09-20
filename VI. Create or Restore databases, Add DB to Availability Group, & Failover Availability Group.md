@@ -231,7 +231,7 @@ GO
  <br/>
 Use the following PowerShell cmdlet to copy the needed files. Navigate first to the backup location and perform **cp** (Copy-Item) cmdlet.
 ```PowerShell
-cd cd E:\mssql\backups
+cd E:\mssql\backups
 ls
 E:\mssql\backups> cp BikeStores-FullDB.bak,BikeStores-TransactLogBackup.trn,WideWorldImporters-FullDB.bak,WideWorldImporters-TransactLogBackup.trn `
 -Destination \\HJC-SQLDR01\e$\mssql\backups
