@@ -1,6 +1,6 @@
 # AlwaysOnExercise
 
-**VI. Create or Restore databases, Add DB to Availability Group, & Failover Availability Group**
+**VI. Create or Restore databases & Add DB to Availability Group**
 <br/>
 <br/>
 <br/>
@@ -316,13 +316,33 @@ For more details, go to [Adding a Database to an existing SQL Server Always ON C
 <br/>
 <br/>
 
-**E. Failover**
-------------------------------------------------------------------------------------------------------------------------------------
-**E1.** Follow this guide for Failover descriptions, & descriptions:
-<br/>
-**a.** [Explore failover types in SQL Server Always On Availability Groups](https://www.sqlshack.com/explore-failover-types-in-sql-server-always-on-availability-groups/#:~:text=Failover%20options%20in%20the%20SQL,database%20online%20to%20accept%20connections.)
-<br/>
-**b.** [Perform a planned manual failover of an Always On availability group (SQL Server](https://github.com/MicrosoftDocs/sql-docs/blob/live/docs/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server.md)
-<br/>	
-**c.** [Manual SQL Server Availability Group Failover](https://www.mssqltips.com/sqlservertip/3437/manual-sql-server-availability-group-failover/)
+**D10.** Sometimes, adding databases to AG not really go well, like this example: <br/>
+![image](https://user-images.githubusercontent.com/95063830/191158963-00fc4a4f-35c0-4213-a277-b37a019ac670.png)
+
+We can see the new databases has been successfully added to the Availability Group, but it is showing a warning on the secondary replica and its status is showing as “Not Synchronizing”. You can click on the warning link to get more details about this error as shown below. <br/>
+![image](https://user-images.githubusercontent.com/95063830/191159040-f78ebcaa-bc5b-459b-a171-14c88bff0141.png)
+
+The error details indicate something went wrong with the data synchronization. On the 2nd Replica, we can see the two databases are in "Restoring" mode instead of "Synchronized" Mode. The two database has yellow quotation marks indicating a warnings/problems. <br/>
+![image](https://user-images.githubusercontent.com/95063830/191159758-a6401d2b-880c-4410-b6ee-dc81ead6182b.png)
+
+When we checked the secondary replica, the secondary database was shown in a restoring state then we decided to run the same command that we ran in step 5 on the secondary replica to add the secondary database to the Availability Group. 
+``` T-SQL
+-- --Add the new Secondary Databases to AOAG "hjc-alwaysgrp".
+ALTER DATABASE [BikeStores] SET HADR AVAILABILITY GROUP = "hjc-alwaysgrp";
+GO
+
+ALTER DATABASE [WideWorldImporters] SET HADR AVAILABILITY GROUP = "hjc-alwaysgrp";
+GO
+```
+![image](https://user-images.githubusercontent.com/95063830/191160258-65433421-47af-416e-b4b2-5c382e43542c.png) <br/>
+
+Once the above command is executed successfully we will again check the SSMS dashboard report to validate the AOAG configuration. <br/>
+![image](https://user-images.githubusercontent.com/95063830/191160404-3c6292be-03be-4ea8-88a3-ae177fda64a9.png)
+![image](https://user-images.githubusercontent.com/95063830/191160615-052df6f1-9ad1-4ac0-93ea-c70aab9cb53d.png)
+
+
+
+
+
+
 
